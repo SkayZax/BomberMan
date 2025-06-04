@@ -44,7 +44,7 @@ public class BomberManController implements UpdateView {
     @FXML
     public void initialize() {
         // Créez d'abord la carte
-        map = GameMapFactory.createMapWithRandomBrickWalls(ROWS,COLS,75);
+        map = GameMapFactory.createMapWithRandomBrickWalls(ROWS,COLS,20);
         // Initialisez la facade avec la carte
         facade = new facade(map);
 

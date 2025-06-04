@@ -1,4 +1,4 @@
-/**
+package fr.univartois.butinfo.ihm.model; /**
  * Ce logiciel est distribué à des fins éducatives.
  *
  * Il est fourni "tel quel", sans garantie d'aucune sorte, explicite
@@ -14,22 +14,25 @@
  * Tous droits réservés.
  */
 
+import fr.univartois.butinfo.ihm.model.AbstractBomb;
+
 /**
- * La classe Bomb représente une bombe qui peut être déposée sur une tuile de la map afin
- * de faire exploser le contenu des tuiles environnantes.
+ * La classe LargeBomb représente une bombe qui peut être déposée sur une tuile de la map
+ * afin de faire exploser le contenu des tuiles environnantes situées à deux tuiles de
+ * distance.
  *
  * @author Romain Wallon
  *
  * @version 0.1.0
  */
-public class Bomb extends AbstractBomb {
+public class LargeBomb extends AbstractBomb {
 
     /**
-     * Crée une nouvelle instance de Bomb.
-     *
+     * Crée une nouvelle instance de LargeBomb.
+     * 
      * @param game La façade gérant la partie en cours.
      */
-    protected Bomb(MaFacadeBomberman game) {
+    protected LargeBomb(facade game) {
         super(game);
     }
 
@@ -40,7 +43,7 @@ public class Bomb extends AbstractBomb {
      */
     @Override
     public String getName() {
-        return "bomb";
+        return "large-bomb";
     }
 
     /*
@@ -50,29 +53,29 @@ public class Bomb extends AbstractBomb {
      */
     @Override
     public String getDescription() {
-        return "Cette bombe fait exploser le contenu des tuiles environnantes.";
+        return "Cette bombe fait exploser le contenu des tuiles environnantes situées à deux tuiles de distance.";
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see fr.univartois.butinfo.ihm.bomberman.model.AbstractBomb#getDelay()
      */
     @Override
     public int getDelay() {
-        return 3;
+        return 5;
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see fr.univartois.butinfo.ihm.bomberman.model.AbstractBomb#explode()
      */
     @Override
     public void explode() {
         exploded.set(true);
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
+        for (int i = -2; i <= 2; i++) {
+            for (int j = -2; j <= 2; j++) {
                 // game.explode(row + i, column + j);
             }
         }
